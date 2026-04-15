@@ -7,6 +7,7 @@ type DeferredSectionProps = {
   component: LazyWithPreloadComponent
   minHeight: number | string
   rootMargin?: string
+  eager?: boolean
 }
 
 const hiddenSentinelStyle = {
@@ -23,17 +24,20 @@ const DeferredSection = ({
   component: Component,
   minHeight,
   rootMargin = '1400px 0px',
+  eager = false,
 }: DeferredSectionProps) => {
   const placeholderRef = useRef<HTMLDivElement | null>(null)
   const shouldLoad = useIntersectionState(placeholderRef, {
+    enabled: !eager,
     fallbackInView: true,
+    initialInView: eager,
     once: true,
     rootMargin,
   })
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
-    if (!shouldLoad || isReady) {
+    if ((!shouldLoad && !eager) || isReady) {
       return
     }
 
@@ -50,7 +54,7 @@ const DeferredSection = ({
     return () => {
       isCancelled = true
     }
-  }, [Component, isReady, shouldLoad])
+  }, [Component, eager, isReady, shouldLoad])
 
   const placeholderStyle = resolvePlaceholderStyle(minHeight)
 
