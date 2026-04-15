@@ -1,1 +1,0 @@
-import{t as e}from"./react-vendor-BNTF4ndc.js";import{n as t}from"./router-D2RfdTL9.js";var n={onHomeButton:`_onHomeButton_1eeds_1`},r=e(),i=()=>(0,r.jsx)(t,{to:`/`,className:n.onHomeButton,children:(0,r.jsx)(`span`,{className:`blockSpan`,children:`На главную`})});export{i as t};

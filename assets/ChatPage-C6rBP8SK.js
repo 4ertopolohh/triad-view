@@ -1,0 +1,1 @@
+import{t as e}from"./react-vendor-BNTF4ndc.js";import{t}from"./InDevSection-Boosff-e.js";var n=e(),r=()=>(0,n.jsx)(`main`,{id:`chatPage`,children:(0,n.jsx)(t,{title:`Чат`})});export{r as default};

@@ -1,1 +1,0 @@
-import{t as e}from"./react-vendor-BNTF4ndc.js";import{t}from"./InDevSection-ho_qlwDl.js";var n=e(),r=()=>(0,n.jsx)(`main`,{id:`servicesPage`,children:(0,n.jsx)(t,{title:`Услуги`})});export{r as default};

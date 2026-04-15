@@ -1,1 +1,0 @@
-import{t as e}from"./react-vendor-BNTF4ndc.js";import{t}from"./InDevSection-ho_qlwDl.js";var n=e(),r=()=>(0,n.jsx)(`main`,{id:`portfolioPage`,children:(0,n.jsx)(t,{title:`Портфолио`})});export{r as default};
