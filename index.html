@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/triad-view/favicon-32x32.png?v=2" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/triad-view/favicon-16x16.png?v=2" />
+    <link rel="icon" type="image/x-icon" href="/triad-view/favicon.ico?v=2" sizes="any" />
+    <link rel="shortcut icon" href="/triad-view/favicon.ico?v=2" />
+    <link rel="apple-touch-icon" href="/triad-view/apple-touch-icon.png?v=2" />
+    <style>
+      html,
+      body,
+      #root {
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: #f2f2f2;
+      }
+
+      .boot-loader {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        background: linear-gradient(180deg, rgba(242, 242, 242, 0.95) 0%, rgba(242, 242, 242, 0.98) 100%);
+      }
+
+      .boot-loader::before,
+      .boot-loader::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .boot-loader::before {
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(circle, rgba(116, 151, 220, 0.24) 0%, rgba(116, 151, 220, 0) 72%);
+        filter: blur(8px);
+        animation: boot-loader-breathe 2.8s ease-in-out infinite;
+      }
+
+      .boot-loader::after {
+        width: 420px;
+        height: 420px;
+        border: 1px solid rgba(201, 201, 201, 0.4);
+        opacity: 0.45;
+      }
+
+      .boot-loader__body {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .boot-loader__mark {
+        width: 128px;
+        height: 128px;
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .boot-loader__ring,
+      .boot-loader__track {
+        position: absolute;
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+
+      .boot-loader__ring--base {
+        inset: 0;
+        border: 1px solid rgba(201, 201, 201, 0.78);
+      }
+
+      .boot-loader__ring--primary {
+        inset: 0;
+        border: 1px solid transparent;
+        border-top-color: #7497dc;
+        border-right-color: rgba(116, 151, 220, 0.82);
+        animation: boot-loader-spin 1.15s linear infinite;
+      }
+
+      .boot-loader__ring--secondary {
+        inset: 14px;
+        border: 1px solid transparent;
+        border-bottom-color: rgba(48, 48, 48, 0.32);
+        border-left-color: rgba(48, 48, 48, 0.22);
+        animation: boot-loader-spin-reverse 1.9s linear infinite;
+      }
+
+      .boot-loader__track {
+        inset: 6px;
+        animation: boot-loader-spin 2.7s linear infinite;
+      }
+
+      .boot-loader__dot {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        background: #7497dc;
+        box-shadow: 0 0 0 6px rgba(116, 151, 220, 0.14);
+      }
+
+      .boot-loader__core {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 201, 201, 0.92);
+        background: radial-gradient(circle at 35% 35%, rgba(242, 242, 242, 0.98) 0%, rgba(242, 242, 242, 0.72) 100%);
+        box-shadow: 0 14px 32px rgba(48, 48, 48, 0.08);
+      }
+
+      .boot-loader__caption {
+        min-width: 168px;
+        padding: 10px 18px 9px;
+        border: 1px solid rgba(201, 201, 201, 1);
+        border-radius: 999px;
+        background: rgba(242, 242, 242, 0.64);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        box-shadow: 0 18px 32px rgba(48, 48, 48, 0.06);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .boot-loader__brand {
+        font-family: "Actay Wide", sans-serif;
+        font-size: 12px;
+        line-height: 1;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #303030;
+      }
+
+      .boot-loader__label {
+        font-family: "Actay", sans-serif;
+        font-size: 14px;
+        line-height: 1;
+        color: #686868;
+      }
+
+      @keyframes boot-loader-spin {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes boot-loader-spin-reverse {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      @keyframes boot-loader-breathe {
+        0%,
+        100% {
+          opacity: 0.72;
+          transform: scale(1);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scale(1.04);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .boot-loader::before,
+        .boot-loader__ring--primary,
+        .boot-loader__ring--secondary,
+        .boot-loader__track {
+          animation: none;
+        }
+      }
+    </style>
+    <title>Триад Студио</title>
+    <script type="module" crossorigin src="/triad-view/assets/index-CA-f5O_3.js"></script>
+    <link rel="modulepreload" crossorigin href="/triad-view/assets/rolldown-runtime-Dw2cE7zH.js">
+    <link rel="modulepreload" crossorigin href="/triad-view/assets/react-vendor-BNTF4ndc.js">
+    <link rel="modulepreload" crossorigin href="/triad-view/assets/router-D2RfdTL9.js">
+    <link rel="modulepreload" crossorigin href="/triad-view/assets/useRevealOnIntersect-DqoiHfhu.js">
+    <link rel="stylesheet" crossorigin href="/triad-view/assets/index-y-t1W45f.css">
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot-loader" role="status" aria-live="polite" aria-label="Загрузка">
+        <div class="boot-loader__body">
+          <div class="boot-loader__mark" aria-hidden="true">
+            <span class="boot-loader__ring boot-loader__ring--base"></span>
+            <span class="boot-loader__ring boot-loader__ring--primary"></span>
+            <span class="boot-loader__ring boot-loader__ring--secondary"></span>
+            <span class="boot-loader__track">
+              <span class="boot-loader__dot"></span>
+            </span>
+            <span class="boot-loader__core"></span>
+          </div>
+          <div class="boot-loader__caption">
+            <span class="boot-loader__brand">triad studio</span>
+            <span class="boot-loader__label">Загрузка</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
