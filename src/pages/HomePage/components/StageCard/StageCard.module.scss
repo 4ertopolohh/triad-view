@@ -1,0 +1,98 @@
+@use '../../../../styles/variables' as *;
+
+.stageCard{
+    background-color: $color-white-background;
+    border-radius: 25px;
+    border: 1px solid $color-gray-glass-stroke;
+    width: 350px - 30px;
+    height: 350px - 30px;
+    padding: 15px 15px;
+    @include flex-center-column;
+    justify-content: start;
+    transform: scale(1);
+    transform-origin: center center;
+    will-change: transform, background-color, border-color;
+    transition:
+        transform 500ms ease,
+        background-color 500ms ease,
+        border-color 500ms ease,
+        width 500ms ease,
+        height 500ms ease;
+
+    .header{
+        @include flex-between-row;
+        align-items: start;
+        width: 100%;
+
+        .count{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid $color-black-base;
+            @include flex-center-row;
+            transition:
+                border-color 500ms ease,
+                color 500ms ease;
+            
+            span{
+                font-size: 20px;
+                text-align: center;
+                font-family: $font-default;
+                color: $color-black-base;
+                transition: color 500ms ease;
+            }
+        }
+
+        .title{
+            font-size: 16px;
+            text-align: right;
+            max-width: 275px;
+            transition:
+                color 500ms ease,
+                font-size 500ms ease,
+                max-width 500ms ease;
+        }
+    }
+
+    .image{
+        height: 174px;
+        width: auto;
+        margin-top: 15px;
+        transition:
+            height 500ms ease,
+            margin-top 500ms ease;
+    }
+
+    .description{
+        text-align: center;
+        font-size: 15px;
+        margin-top: 20px;
+        transition:
+            color 500ms ease,
+            font-size 500ms ease;
+    }
+}
+
+.active{
+    background-color: $color-blue-base;
+    border-color: transparent;
+    transform: scale(1.15);
+
+    .header{
+        .count{
+            border-color: $color-white-base;
+
+            span{
+                color: $color-white-base;
+            }
+        }
+
+        .title{
+            color: $color-white-base;
+        }
+    }
+
+    .description{
+        color: $color-white-base;
+    }
+}

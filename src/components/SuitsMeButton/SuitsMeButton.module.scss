@@ -1,0 +1,43 @@
+@use '../../styles/variables' as *;
+
+.suitsMeButton{
+    width: calc(100% - 34px);
+    height: 40px;
+    border-radius: 20px;
+    @include flex-between-row;
+    padding-left: 20px;
+    padding-right: 14px;
+    transform: translateZ(0);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, background-color;
+    transition:
+        transform 500ms ease,
+        background-color 500ms ease;
+
+    span{
+        font-size: 14px;
+        color: inherit;
+        transform: none;
+        line-height: 1;
+    }
+
+    .icon{
+        width: 8px;
+        height: 12px;
+    }
+
+    &:hover{
+        transform: translateZ(0) scale(0.99);
+    }
+}
+
+.white{
+    background-color: $color-white-base;
+    color: $color-black-base;
+}
+
+.black{
+    background-color: $color-black-base;
+    color: $color-white-base;
+}

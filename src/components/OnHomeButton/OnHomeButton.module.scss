@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+
+.onHomeButton{
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: $color-blue-base;
+    @include flex-center-column;
+    transform: translateZ(0);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, background-color;
+    transition:
+        transform 500ms ease,
+        background-color 500ms ease;
+
+    span{
+        font-size: 16px;
+        font-family: $font-default-title;
+        color: $color-white-base;
+        line-height: 1;
+        transform: none;
+    }
+
+    &:hover{
+        transform: translateZ(0) scale(0.99);
+        background-color: $color-black-base;
+    }
+}

@@ -1,0 +1,16 @@
+@use '../../styles/variables' as *;
+
+.SingInButton{
+    padding-left: 10px;
+
+    span{
+        text-decoration: underline;
+        font-size: 18px;
+        color: $color-black-base;
+        transition: $transition-style;
+
+        &:hover{
+            color: $color-gray-base;
+        }
+    }
+}

@@ -1,0 +1,113 @@
+@use '../../styles/variables' as *;
+
+.footer{
+    width: 100%;
+    height: 385px;
+    border-top: 1px solid $color-gray-base;
+    @include flex-center-column;
+
+    .container{
+        width: 100%;
+        height: 325px;
+        @include flex-between-column;
+
+        .content{
+            width: 100%;
+            @include flex-between-row;
+
+            .photoEditorLink{
+                font-size: 14px;
+                font-family: $font-default-title;
+                text-decoration: underline;
+                transform: $transition-style;
+
+                &:hover{
+                    color: $color-gray-base;
+                }
+            }
+
+            .socialsBlock{
+                max-width: 158px;
+                width: 100%;
+                height: 67px;
+                @include flex-between-column;
+                align-items: end;
+
+                .title{
+                    font-size: 14px;
+                    font-family: $font-default-title;
+                }
+
+                .socialsList{
+                    width: 100%;
+                    @include flex-between-row;
+
+                    .socialsListItem{
+
+                        .socialsListLink{
+                            width: 32px;
+                            height: 32px;
+
+                            img{
+                                width: 32px;
+                                height: 32px;
+                                transition: $transition-style;
+                                
+                                &:hover{
+                                    transform: scale(0.9);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .docsBlock{
+                width: 234px;
+                height: 60px;
+                @include flex-between-column;
+                align-items: start;
+
+                .docLink{
+                    font-size: 14px;
+                    font-family: $font-default;
+                    color: $color-gray-base;
+                    text-decoration: underline;
+                    transition: $transition-style;
+
+                    &:hover{
+                        color: $color-black-base;
+                    }
+                }
+
+                .devLink{
+                    font-size: 14px;
+                    font-family: $font-default;
+                    color: $color-gray-base;
+
+                    a{
+                        color: $color-black-base;
+                        transition: $transition-style;
+                        text-decoration: underline;
+
+                        &:hover{
+                            color: $color-gray-base;
+                        }
+                    }
+                }
+            }
+
+            .allRights{
+                height: 60px;
+                display: flex;
+                justify-content: end;
+                align-items: end;
+
+                h6{
+                    font-size: 14px;
+                    font-family: $font-default-title;
+                }
+            }
+        }
+    }
+}

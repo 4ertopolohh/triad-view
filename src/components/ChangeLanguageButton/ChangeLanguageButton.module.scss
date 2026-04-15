@@ -1,0 +1,48 @@
+@use '../../styles/variables' as *;
+
+.changeLanguageButton{
+    width: 110px;
+    height: 40px;
+    background-color: $color-white-background;
+    border-radius: 20px;
+    @include flex-center-column;
+    transform: translateZ(0);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, background-color;
+    transition:
+        transform 500ms ease,
+        background-color 500ms ease;
+
+    &:hover{
+        transform: translateZ(0) scale(0.99);
+        background-color: $color-black-base;
+        
+        .languagePartActive{
+            color: $color-white-base;
+        }
+    }
+}
+
+.languageText{
+    @include flex-center-row;
+    line-height: 1;
+    transform: none;
+    gap: 5px;
+    padding-top: 4px;
+}
+
+.languagePart,
+.separator{
+    font-size: 16px;
+    transition: $transition-style;
+}
+
+.languagePartActive{
+    color: $color-black-base;
+}
+
+.languagePartInactive,
+.separator{
+    color: $color-gray-base;
+}

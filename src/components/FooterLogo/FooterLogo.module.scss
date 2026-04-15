@@ -1,0 +1,19 @@
+@use '../../styles/variables' as *;
+
+.footerLogo{
+    max-width: 343px;
+    width: 100%;
+    @include flex-between-row;
+
+    img{
+        width: 60px;
+        height: 60px;
+    }
+
+    h5{
+        font-size: 16px;
+        color: $color-blue-base;
+        display: inline-block;
+        line-height: 1;
+    }
+}

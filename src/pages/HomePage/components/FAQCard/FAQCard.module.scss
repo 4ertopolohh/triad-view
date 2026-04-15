@@ -1,0 +1,50 @@
+@use '../../../../styles/variables' as *;
+
+.faqCard{
+    width: 260px;
+    height: 305px;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: $color-white-background;
+    @include flex-center-column;
+    justify-content: start;
+    gap: 5px;
+    position: relative;
+    transform: translateZ(0);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, background-color;
+    transition:
+        transform 500ms ease;
+
+    &:hover{
+        transform: scale(0.99);
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 162px;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        background: url('../../../../assets/images/pictures/questionSymbol.png') center bottom / contain no-repeat;
+        z-index: 1;
+    }
+    
+    .question{
+        font-size: 24px;
+        font-family: $font-default-title;
+        width: 100%;
+        z-index: 2;
+        display: inline-block;
+    }
+
+    .answer{
+        font-size: 15px;
+        width: 100%;
+        z-index: 2;
+        display: inline-block;
+    }
+}

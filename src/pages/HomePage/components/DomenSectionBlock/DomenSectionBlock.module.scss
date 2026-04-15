@@ -1,0 +1,71 @@
+@use '../../../../styles/variables' as *;
+
+.domenSectionBlock{
+    --block-scale: 1;
+    width: 1210px;
+    height: 118px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: 1px solid;
+    @include apply-glass-surface($glass-light-matte-strong);
+    backdrop-filter: blur(4px) !important;
+    @include flex-between-row;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 30px;
+    padding-left: 500px;
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    transform: translateZ(0) translateX(-80px) scale(var(--block-scale));
+    transform-origin: center;
+    backface-visibility: hidden;
+    transition:
+        opacity 700ms ease,
+        transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+
+    &:hover{
+        --block-scale: 0.99;
+    }
+
+    .desc{
+        @include flex-center-column;
+        gap: 10px;
+        align-items: start;
+        max-width: 1044px;
+        height: 100%;
+
+        .title{
+            font-size: 40px;
+            font-family: $font-default-title;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .subtitle{
+            font-size: 16px;
+            color: $color-gray-base;
+            line-height: 1;
+            display: inline-block;
+        }
+    }
+
+    .icon{
+        width: 132px;
+        height: 118px;
+    }
+}
+
+.domenSectionBlockVisible{
+    opacity: 1;
+    transform: translateZ(0) translateX(0) scale(var(--block-scale));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .domenSectionBlock{
+        transition: none;
+        transform: translateZ(0) translateX(0) scale(1);
+        opacity: 1;
+    }
+}

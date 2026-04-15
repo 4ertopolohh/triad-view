@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+
+.contactsButton {
+    display: inline-flex;
+    @include flex-center-column;
+    background-color: $color-blue-base;
+    transform: translateZ(0);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, background-color;
+    transition:
+        transform 500ms ease,
+        background-color 500ms ease;
+    z-index: 2;
+
+    span{
+        text-transform: uppercase;
+        font-family: $font-default-title;
+        font-size: 16px;
+        color: $color-white-base;
+        line-height: 1;
+        transform: none;
+    }
+
+    &:hover{
+        background-color: $color-black-base;
+        transform: translateZ(0) scale(0.99);
+    }
+}

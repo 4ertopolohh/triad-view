@@ -1,0 +1,6 @@
+@use '../../styles/variables' as *;
+
+.headerButtons{
+    @include flex-between-row;
+    gap: 10px;
+}

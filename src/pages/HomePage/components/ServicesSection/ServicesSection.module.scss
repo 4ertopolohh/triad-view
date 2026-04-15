@@ -1,0 +1,49 @@
+@use '../../../../styles/variables' as *;
+
+.servicesSection{
+    margin-top: 150px;
+
+    .container{
+        width: 100%;
+        gap: 40px;
+        @include flex-center-column;
+        align-items: start;
+
+        .content{
+            @include flex-center-column;
+            gap: 25px;
+            width: 100%;
+
+            .cards{
+                @include flex-between-row;
+                width: 100%;
+
+                .cardReveal{
+                    opacity: 0;
+                    transform: translateY(28px);
+                    transition:
+                        opacity 650ms ease var(--reveal-delay, 0ms),
+                        transform 650ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+                    will-change: opacity, transform;
+                }
+
+                .cardRevealVisible{
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }        
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .servicesSection{
+        .container{
+            .content{
+                .cardReveal{
+                    transition: none;
+                }
+            }
+        }
+    }
+}

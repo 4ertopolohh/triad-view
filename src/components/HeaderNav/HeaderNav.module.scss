@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+
+.headerNav{
+    max-width: 688px;
+    width: 100%;
+    height: fit-content;
+
+    .headerNavList{
+        width: 100%;
+        @include flex-between-row;
+
+        .headerNavListItem{
+            .headerNavListItemLink{
+                font-size: 18px;
+                color: $color-gray-base;
+                transition: $transition-style;
+
+                &:hover{
+                    color: $color-black-base;
+                }
+            }
+
+            .headerNavListItemLinkActive{
+                color: $color-black-base;
+            }
+        }
+    }
+}

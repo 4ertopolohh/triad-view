@@ -1,0 +1,39 @@
+@use '../../../../styles/variables' as *;
+
+@keyframes console-cursor-blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.welcomeSectionDesc{
+    max-width: 630px;
+    height: 282px;
+    @include flex-between-column;
+    align-items: start;
+
+    .title{
+        font-size: 65px;
+        position: relative;
+
+        &::after{
+            content: '_';
+            position: absolute;
+            bottom: 13px;
+            right: 0;
+            animation: console-cursor-blink 1s steps(1, end) infinite;
+            will-change: opacity;
+        }
+    }
+
+    .subtitle{
+        font-size: 18px;
+        color: $color-gray-base;
+    }
+}

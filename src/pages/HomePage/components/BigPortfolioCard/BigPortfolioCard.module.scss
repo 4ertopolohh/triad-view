@@ -1,0 +1,171 @@
+@use '../../../../styles/variables' as *;
+
+.bigPortfolioCard{
+    width: 590px;
+    height: 590px;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+    contain: layout paint;
+    isolation: isolate;
+    @include apply-glass-surface($glass-light-matte-strong);
+    @include flex-center-column;
+    align-items: start;
+    transform: translateZ(0);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, background-color, border-color;
+    transition:
+        transform 500ms ease,
+        background-color 500ms ease,
+        border-color 500ms ease;
+
+    &:hover{
+        transform: translateZ(0) scale(0.99);
+    }
+
+    &::before{
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 340px;
+        height: 250px;
+        border-radius: 58% 42% 45% 55% / 55% 50% 50% 45%;
+        background: radial-gradient(
+            circle at 30% 30%,
+            rgba($color-blue-base, 1) 0%,
+            rgba($color-blue-base, 0.64) 26%,
+            rgba($color-blue-base, 0.36) 50%,
+            rgba($color-blue-base, 0.16) 68%,
+            rgba($color-blue-base, 0) 84%
+        );
+        filter: blur(24px) saturate(122%) brightness(1.06);
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        animation: portfolioBlobFloat 20s ease-in-out infinite;
+        animation-play-state: paused;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    :global([data-portfolio-runtime='active']) &::before{
+        animation-play-state: running;
+    }
+
+    > *{
+        position: relative;
+        z-index: 1;
+    }
+
+    .number{
+        font-size: 48px;
+        line-height: 1;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    .title{
+        @include flex-center-column;
+        align-items: start;
+
+        .miniTitle{
+            font-size: 30px;
+            font-family: $font-default-title;
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .bigTitle{
+            font-size: 30px;
+            align-items: 1;
+            display: inline-block;
+        }
+    }
+
+    .wrapper{
+        width: 100%;
+        @include flex-center-row;
+        height: 313px;
+        padding: 30px 0;
+
+        .logo{
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    .desc{
+        @include flex-between-row;
+        align-items: end;
+        width: 100%;
+
+        .info{
+            @include flex-center-column;
+            align-items: start;
+            gap: 7px;
+
+            .item{
+                font-size: 16px;
+                line-height: 1;
+            }
+        }
+    }
+}
+
+@keyframes portfolioBlobFloat{
+    0%{
+        transform: translate(-50%, -50%) translate(145px, -150px) scale(1);
+        border-radius: 58% 42% 45% 55% / 55% 50% 50% 45%;
+    }
+
+    12.5%{
+        transform: translate(-50%, -50%) translate(165px, -28px) scale(1.07);
+        border-radius: 48% 52% 58% 42% / 52% 45% 55% 48%;
+    }
+
+    25%{
+        transform: translate(-50%, -50%) translate(132px, 162px) scale(0.98);
+        border-radius: 62% 38% 40% 60% / 45% 58% 42% 55%;
+    }
+
+    37.5%{
+        transform: translate(-50%, -50%) translate(34px, 76px) scale(1.04);
+        border-radius: 44% 56% 50% 50% / 60% 42% 58% 40%;
+    }
+
+    50%{
+        transform: translate(-50%, -50%) translate(-138px, 168px) scale(0.97);
+        border-radius: 57% 43% 41% 59% / 49% 61% 39% 51%;
+    }
+
+    62.5%{
+        transform: translate(-50%, -50%) translate(-165px, 14px) scale(1.08);
+        border-radius: 40% 60% 53% 47% / 56% 44% 56% 44%;
+    }
+
+    75%{
+        transform: translate(-50%, -50%) translate(-145px, -145px) scale(1.01);
+        border-radius: 63% 37% 47% 53% / 42% 57% 43% 58%;
+    }
+
+    87.5%{
+        transform: translate(-50%, -50%) translate(-18px, -82px) scale(1.05);
+        border-radius: 46% 54% 60% 40% / 58% 41% 59% 42%;
+    }
+
+    100%{
+        transform: translate(-50%, -50%) translate(145px, -150px) scale(1);
+        border-radius: 58% 42% 45% 55% / 55% 50% 50% 45%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bigPortfolioCard{
+        &::before{
+            animation: none;
+        }
+    }
+}

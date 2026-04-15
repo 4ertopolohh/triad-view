@@ -1,0 +1,57 @@
+@use '../../../../styles/variables' as *;
+
+.whyUsFirstBlock{
+    width: 366px;
+    height: 158px;
+    padding: 20px;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    @include flex-between-column;
+
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 25px;
+        width: 168px;
+        height: 198px;
+        background-image: var(--why-us-first-block-element);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        pointer-events: none;
+    }
+
+    .title{
+        font-size: 32px;
+        font-family: $font-default-title;
+        line-height: 1.1;
+        position: relative;
+        z-index: 1;
+    }
+
+    .desc{
+        font-size: 16px;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.black{
+    background-color: $color-black-base;
+
+    .title,
+    .desc{
+        color: $color-white-base;
+    }
+}
+
+.white{
+    background-color: $color-white-background;
+
+    .title,
+    .desc{
+        color: $color-black-base;
+    }
+}

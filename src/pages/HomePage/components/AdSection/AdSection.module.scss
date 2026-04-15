@@ -1,0 +1,79 @@
+@use '../../../../styles/variables' as *;
+
+.adSection{
+    min-height: 1081px;
+    height: var(--ad-section-height, 1081px);
+    @include flex-center-row;
+    align-items: start;
+    background-image: url('../../../../assets/images/pictures/adSectionBackground.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    .container{
+        @include flex-between-row;
+        align-items: start;
+        width: 100%;
+
+        .title{
+            font-size: 64px;
+            text-align: center;
+            max-width: 550px;
+            position: relative;
+            isolation: isolate;
+            z-index: 2;
+            margin-top: 100px !important;
+            transform: translateY(var(--title-translate-y, 0px));
+            transition: none;
+            will-change: transform;
+
+            &::before{
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 709px;
+                height: 709px;
+                transform: translate(-50%, -50%);
+                border: 1px solid;
+                border-radius: 50%;
+                @include apply-glass-surface($glass-base-blue-matte-lite);
+                z-index: -1;
+            }
+        }
+
+        .description{
+            @include flex-center-column;
+            gap: 25px;
+            max-width: 600px;
+            position: relative;
+            isolation: isolate;
+            z-index: 1;
+            margin-top: 10px;
+            transform: translateY(var(--description-translate-y, 0px));
+            transition: none;
+            will-change: transform;
+
+            .subtitle{
+                text-align: center;
+                font-size: 24px;
+            }
+
+            &::before{
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 1081px;
+                height: 1081px;
+                transform: translate(-50%, -50%);
+                border: 1px solid;
+                border-radius: 50%;
+                @include apply-glass-surface($glass-base-blue-matte-lite);
+                z-index: -1;
+            }
+        }
+    }
+}

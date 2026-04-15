@@ -1,0 +1,93 @@
+@use '../../../../styles/variables' as *;
+
+.miniPortfolioCard{
+    width: 550px;
+    height: 260px;
+    padding: 15px;
+    border-radius: 25px;
+    @include flex-between-column;
+    transform: translateZ(0);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, background-color, border-color;
+    transition:
+        transform 500ms ease,
+        background-color 500ms ease,
+        border-color 500ms ease;
+
+    &:hover{
+        transform: translateZ(0) scale(0.99);
+    }
+
+    .header{
+        @include flex-between-row;
+        align-items: start;
+        width: 100%;
+
+        .number{
+            font-size: 48px;
+            color: $color-white-base;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .title{
+            font-size: 30px;
+            font-family: $font-default-title;
+            text-align: end;
+            color: $color-white-base;
+            line-height: 1;
+            display: inline-block;
+            max-width: 330px
+        }
+    }
+
+    .body{
+        @include flex-between-row;
+        align-items: end;
+        width: 100%;
+
+        .wrapper{
+            max-width: 335px;
+            width: 100%;
+            @include flex-center-row;
+            height: 100%;
+
+            .logo{
+                max-height: 189px;
+                height: 80%;
+                width: auto;
+            }
+        }
+
+        .desc{
+            @include flex-center-column;
+            align-items: end;
+            justify-content: end;
+            height: 100%;
+            gap: 20px;
+
+            .info{
+                @include flex-center-column;
+                align-items: end;
+                gap: 7px;
+
+                .item{
+                    font-size: 16px;
+                    color: $color-white-base;
+                    line-height: 1;
+                    display: inline-block;
+                    text-align: end;
+                }
+            }
+        }
+    }
+}
+
+.black{
+    background-color: $color-black-base;
+}
+
+.blue{
+    background-color: $color-blue-base;
+}

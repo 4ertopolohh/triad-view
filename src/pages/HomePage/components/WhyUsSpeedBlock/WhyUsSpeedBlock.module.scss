@@ -1,0 +1,66 @@
+@use '../../../../styles/variables' as *;
+
+.speedBlock{
+    max-width: 358px;
+    padding: 0 20px;
+    width: 100%;
+    height: 110px;
+    background-color: $color-white-background;
+    border-radius: 24px;
+    @include flex-between-row;
+    position: relative;
+    overflow: visible;
+    isolation: isolate;
+
+    &::before{
+        content: '';
+        position: absolute;
+        inset: 0;
+        height: 110px;
+        background-image: url('../../../../assets/images/pictures/speedBackground.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: auto 100%;
+        z-index: 0;
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        width: 1px;
+        height: 30px;
+        background-color: $color-gray-base;
+        transform: translateX(-50%) scaleY(0);
+        transform-origin: top center;
+        transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1) var(--why-us-line-delay, 700ms);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .desc{
+        @include flex-center-column;
+        align-items: start;
+        position: relative;
+        z-index: 1;
+
+        p{
+            font-family: $font-default-title;
+            font-size: 20px;
+        }
+    }
+
+    .speedIcon{
+        width: 110px;
+        height: 110px;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.visible{
+    &::after{
+        transform: translateX(-50%) scaleY(1);
+    }
+}

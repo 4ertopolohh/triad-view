@@ -1,0 +1,22 @@
+@use '../../styles/variables' as *;
+
+.header{
+    width: 100%;
+    height: 100px;
+    @include flex-between-row;
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include apply-glass-surface($glass-white-matte-strong);
+    border-bottom: 1px solid transparent;
+    transition: $transition-style;
+    z-index: 99;
+
+    .container{
+        @include flex-between-row;
+    }
+}
+
+.headerScrolled{
+    border-bottom-color: $color-gray-glass-stroke;
+}

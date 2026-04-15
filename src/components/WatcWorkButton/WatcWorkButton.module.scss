@@ -1,0 +1,41 @@
+@use '../../styles/variables' as *;
+
+.watcWorkButton{
+    width: 215px;
+    height: 40px;
+    @include flex-center-column;
+    border-radius: 20px;
+    transform: translateZ(0);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, background-color;
+    transition:
+        transform 500ms ease,
+        background-color 500ms ease;
+
+    &:hover{
+        transform: translateZ(0) scale(0.99);
+    }
+
+    span{
+        font-size: 16px;
+        font-family: $font-default-title;
+        transform: none;
+    }
+}
+
+.black{
+    background-color: $color-black-base;
+
+    span{
+        color: $color-white-base;
+    }
+}
+
+.white{
+    background-color: $color-white-base;
+
+    span{
+        color: $color-black-base;
+    }
+}

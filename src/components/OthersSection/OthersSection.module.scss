@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+
+.othersSection{
+    margin-top: 75px;
+    margin-bottom: 150px;
+    
+    .container{
+        @include flex-between-row;
+    }
+
+    .cardWrapper{
+        opacity: 0;
+        transform: translateY(36px);
+        will-change: opacity, transform;
+    }
+
+    .cardVisible{
+        animation: othersCardReveal 0.7s ease-out forwards;
+        animation-delay: var(--others-card-delay, 0ms);
+    }
+}
+
+@keyframes othersCardReveal{
+    from{
+        opacity: 0;
+        transform: translateY(36px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,26 @@
+@use '../../../../styles/variables' as *;
+
+.domenSection{
+    margin-top: 150px;
+    @include flex-center-row;
+    height: 150px;
+    position: relative;
+
+    &::after{
+        position: absolute;
+        content: '';
+        width: 760px;
+        height: 760px;
+        border-radius: 50%;
+        border: 1px solid;
+        @include apply-glass-surface($glass-base-blue-matte-lite);
+        z-index: -1;
+        right: -400px;
+        top: 0px;
+    }
+
+    .container{
+        position: relative;
+        height: 100%;
+    }
+}

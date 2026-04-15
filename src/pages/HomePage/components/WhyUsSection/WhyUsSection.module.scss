@@ -1,0 +1,53 @@
+@use '../../../../styles/variables' as *;
+
+.whyUsSection{
+    margin-top: 150px;
+
+    .container{
+        @include flex-center-column;
+        align-items: start;
+        gap: 50px;
+        width: 100%;
+
+        .content{
+            @include flex-center-column;
+            width: 100%;
+            gap: 30px;
+
+            .lineContent{
+                width: 100%;
+                @include flex-between-row;
+            }
+
+            .animationWrapper{
+                width: 100%;
+            }
+
+            .revealItem{
+                opacity: 0;
+                transform: translateY(30px);
+                transition:
+                    opacity 700ms ease var(--reveal-delay, 0ms),
+                    transform 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+                will-change: opacity, transform;
+            }
+
+            .revealItemVisible{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .whyUsSection{
+        .container{
+            .content{
+                .revealItem{
+                    transition: none;
+                }
+            }
+        }
+    }
+}

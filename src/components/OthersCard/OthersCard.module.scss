@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+
+.othersCard{
+    width: 400px - 39px;
+    height: 400px -80px;
+    padding: 40px 17px;
+    border-radius: 25px;
+    border: 1px solid $color-gray-glass-stroke;
+    background-color: $color-white-background;
+    @include flex-center-column;
+    gap: 42px;
+    transform: translateZ(0);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, background-color;
+    transition:
+        transform 500ms ease;
+
+    &:hover{
+        transform: scale(0.99);
+    }
+
+    .image{
+        height: 216px;
+        width: auto;
+    }
+
+    .desc{
+        font-size: 32px;
+        font-family: $font-default-title;
+        text-align: center;
+    }
+}

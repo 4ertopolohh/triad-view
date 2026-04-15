@@ -1,0 +1,121 @@
+@use '../../../../styles/variables' as *;
+
+.whyUsSecondBlock{
+    width: 386px;
+    min-height: 80px;
+    padding-left: 20px;
+    border-radius: 25px;
+    @include flex-center-row;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+
+    &::before{
+        content: '';
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        top: 50%;
+        right: 25px;
+        transform: translateY(-50%);
+        background-image: var(--why-us-second-block-element);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        pointer-events: none;
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        width: 1px;
+        height: 30px;
+        background-color: $color-gray-base;
+        transform: translateX(-50%) scaleY(0);
+        transform-origin: top center;
+        transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1) var(--why-us-line-delay, 700ms);
+        pointer-events: none;
+    }
+
+    .content{
+        max-width: calc(100% - 20px);
+        position: relative;
+        z-index: 1;
+        @include flex-center-row;
+        justify-content: start;
+        gap: 35px;
+    }
+
+    .title{
+        font-size: 20px;
+        font-family: $font-default-title;
+        line-height: 1;
+    }
+
+    .subtitle{
+        display: none;
+        font-size: 13px;
+        font-family: $font-default;
+        line-height: 1;
+        max-width: 758px;
+        color: $color-gray-base;
+    }
+}
+
+.visible{
+    &::after{
+        transform: translateX(-50%) scaleY(1);
+    }
+
+    &.big::after{
+        transform: scaleY(1);
+    }
+}
+
+.big{
+    width: calc(100% - 20px);
+    min-height: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+
+    &::after{
+        left: 0;
+        width: 100%;
+        background-color: transparent;
+        background-image:
+            linear-gradient($color-gray-base, $color-gray-base),
+            linear-gradient($color-gray-base, $color-gray-base),
+            linear-gradient($color-gray-base, $color-gray-base);
+        background-repeat: no-repeat;
+        background-size: 1px 100%, 1px 100%, 1px 100%;
+        background-position: 16.666% 50%, 50% 50%, 83.333% 50%;
+        transform: scaleY(0);
+        transform-origin: top center;
+    }
+
+    .subtitle{
+        display: block;
+    }
+}
+
+.black{
+    background-color: $color-black-base;
+
+    .title,
+    .subtitle{
+        color: $color-white-base;
+    }
+}
+
+.white{
+    background-color: $color-white-background;
+
+    .title,
+    .subtitle{
+        color: $color-black-base;
+    }
+}

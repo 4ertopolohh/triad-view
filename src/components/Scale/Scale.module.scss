@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+
+.scale{
+    @include flex-center-row;
+    justify-content: start;
+    // background-color: $color-gray-scale-background;
+    overflow: hidden;
+    position: relative;
+
+    &::after{
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: $color-gray-scale-background;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 900ms cubic-bezier(0.2, 0.85, 0.22, 1);
+        will-change: transform;
+        pointer-events: none;
+        z-index: 0;
+        border-radius: 3px;
+    }
+}
+
+.visibleScale{
+    &::after{
+        transform: scaleX(1);
+    }
+}
+
+.percent{
+    flex-shrink: 0;
+    background-color: $color-green-base;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1400ms cubic-bezier(0.2, 0.85, 0.22, 1) 180ms;
+    will-change: transform;
+    position: relative;
+    z-index: 1;
+}
+
+.visible{
+    transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scale::after,
+    .percent{
+        transition: none;
+    }
+}

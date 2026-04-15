@@ -1,0 +1,235 @@
+@use '../../styles/variables' as *;
+
+@keyframes loader-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-spin-reverse {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes loader-breathe {
+    0%,
+    100% {
+        opacity: 0.72;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+.defaultLoader {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    &::before {
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(circle, rgba($color-blue-base, 0.24) 0%, rgba($color-blue-base, 0) 72%);
+        filter: blur(8px);
+        animation: loader-breathe 2.8s ease-in-out infinite;
+    }
+
+    &::after {
+        width: 420px;
+        height: 420px;
+        border: 1px solid rgba($color-gray-glass-stroke, 0.4);
+        opacity: 0.45;
+    }
+}
+
+.fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 140;
+    background:
+        linear-gradient(180deg, rgba($color-white-base, 0.95) 0%, rgba($color-white-base, 0.98) 100%);
+}
+
+.inline {
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: inherit;
+    background:
+        radial-gradient(circle at 50% 42%, rgba($color-blue-base, 0.1) 0%, rgba($color-blue-base, 0) 58%),
+        linear-gradient(180deg, rgba($color-white-base, 0.55) 0%, rgba($color-white-base, 0.82) 100%);
+
+    &::before {
+        width: 220px;
+        height: 220px;
+    }
+
+    &::after {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+.body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.mark {
+    width: 128px;
+    height: 128px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.ring {
+    position: absolute;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.ringBase {
+    inset: 0;
+    border: 1px solid rgba($color-gray-glass-stroke, 0.78);
+}
+
+.ringPrimary {
+    inset: 0;
+    border: 1px solid transparent;
+    border-top-color: $color-blue-base;
+    border-right-color: rgba($color-blue-base, 0.82);
+    animation: loader-spin 1.15s linear infinite;
+}
+
+.ringSecondary {
+    inset: 14px;
+    border: 1px solid transparent;
+    border-bottom-color: rgba($color-black-base, 0.32);
+    border-left-color: rgba($color-black-base, 0.22);
+    animation: loader-spin-reverse 1.9s linear infinite;
+}
+
+.orbitTrack {
+    position: absolute;
+    inset: 6px;
+    animation: loader-spin 2.7s linear infinite;
+}
+
+.orbitDot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: $color-blue-base;
+    box-shadow: 0 0 0 6px rgba($color-blue-base, 0.14);
+}
+
+.core {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 1px solid rgba($color-gray-glass-stroke, 0.92);
+    background:
+        radial-gradient(circle at 35% 35%, rgba($color-white-base, 0.98) 0%, rgba($color-white-base, 0.72) 100%);
+    box-shadow: 0 14px 32px rgba($color-black-base, 0.08);
+}
+
+.caption {
+    min-width: 168px;
+    padding: 10px 18px 9px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    @include apply-glass-surface($glass-white-matte-strong);
+    box-shadow: 0 18px 32px rgba($color-black-base, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.brand {
+    font-family: $font-default-title;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $color-black-base;
+}
+
+.label {
+    font-family: $font-default;
+    font-size: 14px;
+    line-height: 1;
+    color: $color-gray-base;
+}
+
+.inline {
+    .body {
+        gap: 16px;
+    }
+
+    .mark {
+        width: 104px;
+        height: 104px;
+    }
+
+    .caption {
+        min-width: 150px;
+        padding: 9px 15px 8px;
+        gap: 4px;
+    }
+
+    .brand {
+        font-size: 11px;
+    }
+
+    .label {
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .defaultLoader {
+        &::before {
+            animation: none;
+        }
+    }
+
+    .ringPrimary,
+    .ringSecondary,
+    .orbitTrack {
+        animation: none;
+    }
+}

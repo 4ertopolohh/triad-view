@@ -1,0 +1,26 @@
+@use '../../../../styles/variables' as *;
+
+.whyUsSectionSlogan{
+    font-size: 24px;
+    color: $color-blue-base;
+}
+
+.revealItem{
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+        opacity 650ms ease,
+        transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.revealItemVisible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .revealItem{
+        transition: none;
+    }
+}
